@@ -4,12 +4,6 @@ var acorn = require('acorn/dist/acorn');
 var walk = require('acorn/dist/walk');
 var inject = require('acorn-jsx/inject');
 
-var preParse = function(text, options) {
-  var plugins = options.plugins;
-  if (!plugins) plugins = options.plugins = {};
-  plugins['jsx'] = true;
-};
-
 // Override acorn.walk with JSX
 // see https://github.com/chtefi/acorn-jsx-walk/blob/master/index.js
 var overrideAcornWalkBase = function() {
@@ -69,5 +63,4 @@ tern.registerPlugin('jsx', function(server, options) {
   overrideTernInferWrapper();
   overrideTernTypeFinder();
   overrideTernSearchVisitor();
-  server.on('preParse', preParse);
 });
