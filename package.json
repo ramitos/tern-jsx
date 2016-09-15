@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "acorn": "^4.0.2",
-    "acorn-jsx": "ramitos/acorn-jsx#c2fbc28",
+    "acorn-jsx": "ramitos/acorn-jsx#209f7ec",
     "tern": "^0.20.0"
   },
   "devDependencies": {
