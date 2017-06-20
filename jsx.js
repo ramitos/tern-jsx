@@ -1,5 +1,6 @@
 var infer = require('tern/lib/infer');
 var tern = require('tern/lib/tern');
+// var defs = require('tern/defs/react.json');
 var acorn = require('acorn/dist/acorn');
 var walk = require('acorn/dist/walk');
 var inject = require('acorn-jsx/inject');
@@ -63,4 +64,11 @@ tern.registerPlugin('jsx', function(server, options) {
   overrideTernInferWrapper();
   overrideTernTypeFinder();
   overrideTernSearchVisitor();
+
+  // server.addDefs(defs);
+  // server.on('preParse', function(text, options) {
+  //   var plugins = options.plugins;
+  //   if (!plugins) plugins = options.plugins = {};
+  //   plugins.jsx = true;
+  // });
 });

@@ -15,20 +15,21 @@
     "url": "git://github.com/ramitos/tern-jsx.git"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint . --fix"
   },
   "dependencies": {
-    "acorn": "^4.0.4",
-    "acorn-jsx": "ramitos/acorn-jsx#234721c",
-    "tern": "^0.20.0"
+    "acorn": "^5.0.3",
+    "acorn-jsx": "ramitos/acorn-jsx#6683232",
+    "tern": "^0.21.0"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
-    "eslint": "^3.14.1",
-    "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-react": "^6.9.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint": "^4.0.0",
+    "eslint-config-semistandard": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
