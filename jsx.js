@@ -1,63 +1,63 @@
-var infer = require('tern/lib/infer');
-var tern = require('tern/lib/tern');
-// var defs = require('tern/defs/react.json');
-var acorn = require('acorn/dist/acorn');
-var walk = require('acorn/dist/walk');
-var inject = require('acorn-jsx/inject');
+const infer = require('tern/lib/infer');
+const tern = require('tern/lib/tern');
+// Var defs = require('tern/defs/react.json');
+const acorn = require('acorn/dist/acorn');
+const walk = require('acorn/dist/walk');
+const inject = require('acorn-jsx/inject');
 
 // Override acorn.walk with JSX
 // see https://github.com/chtefi/acorn-jsx-walk/blob/master/index.js
-var overrideAcornWalkBase = function() {
-  var base = walk.base;
-  base.JSXElement = function(node, st, c) {
-    node.children.forEach(function(n) {
+const overrideAcornWalkBase = () => {
+  const base = walk.base;
+  base.JSXElement = (node, st, c) => {
+    node.children.forEach(n => {
       c(n, st);
     });
   };
 
-  base.JSXExpressionContainer = function(node, st, c) {
+  base.JSXExpressionContainer = (node, st, c) => {
     c(node.expression, st);
   };
 
-  base.JSXEmptyExpression = function(node, st, c) {
+  base.JSXEmptyExpression = (node, st, c) => {
     c(node, st);
   };
 };
 
-var overrideTernScopeGatherer = function() {
-  // if (!infer.scopeGatherer) return;
-  var scopeGatherer = infer.scopeGatherer;
-  scopeGatherer['JSXElement'] = function(node, scopes, c) {
-    // console.log(node)
+const overrideTernScopeGatherer = () => {
+  // If (!infer.scopeGatherer) return;
+  const scopeGatherer = infer.scopeGatherer;
+  scopeGatherer.JSXElement = () => {
+    // Console.log(node)
   };
 };
 
-var overrideTernInferWrapper = function() {
-  // if (!infer.inferWrapper) return;
-  var inferWrapper = infer.inferWrapper;
-  inferWrapper['JSXElement'] = function(node, scopes, c) {
-    // console.log(node)
+const overrideTernInferWrapper = () => {
+  // If (!infer.inferWrapper) return;
+  const inferWrapper = infer.inferWrapper;
+  inferWrapper.JSXElement = () => {
+    // Console.log(node)
   };
 };
 
-var overrideTernTypeFinder = function() {
-  // if (!infer.typeFinder) return;
-  var typeFinder = infer.typeFinder;
-  typeFinder['JSXElement'] = function(node, scope) {
-    // console.log(node)
+const overrideTernTypeFinder = () => {
+  // If (!infer.typeFinder) return;
+  const typeFinder = infer.typeFinder;
+  typeFinder.JSXElement = (node, scope) => {
+    // Console.log(node)
     return scope;
   };
 };
 
-var overrideTernSearchVisitor = function() {
-  // if (!infer.searchVisitor) return;
-  var searchVisitor = infer.searchVisitor;
-  searchVisitor['JSXElement'] = function(node, scopes, c) {
-    // console.log(node)
+const overrideTernSearchVisitor = () => {
+  // If (!infer.searchVisitor) return;
+  const searchVisitor = infer.searchVisitor;
+  searchVisitor.JSXElement = () => {
+    // Console.log(node)
   };
 };
 
-tern.registerPlugin('jsx', function(server, options) {
+tern.registerPlugin('jsx', () => {
   inject(acorn);
   overrideAcornWalkBase();
   overrideTernScopeGatherer();
@@ -65,7 +65,7 @@ tern.registerPlugin('jsx', function(server, options) {
   overrideTernTypeFinder();
   overrideTernSearchVisitor();
 
-  // server.addDefs(defs);
+  // Server.addDefs(defs);
   // server.on('preParse', function(text, options) {
   //   var plugins = options.plugins;
   //   if (!plugins) plugins = options.plugins = {};

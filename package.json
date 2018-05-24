@@ -5,31 +5,24 @@
   "main": "jsx.js",
   "author": "Sérgio Ramos <mail@sergioramos.me>",
   "description": "A Tern plugin adding support for JSX",
-  "keywords": [
-    "tern",
-    "react",
-    "jsx"
-  ],
+  "keywords": ["tern", "react", "jsx"],
   "repository": {
     "type": "git",
     "url": "git://github.com/ramitos/tern-jsx.git"
   },
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "fmt": "prettier --config .prettierrc --write '**/*'"
   },
   "dependencies": {
-    "acorn": "^5.0.3",
-    "acorn-jsx": "ramitos/acorn-jsx#6683232",
+    "acorn": "^5.5.3",
+    "acorn-jsx": "ramitos/acorn-jsx#3af8b58",
     "tern": "^0.21.0"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "eslint-config-semistandard": "^11.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^5.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint": "^4.19.1",
+    "eslint-config-xo-react": "^0.16.0",
+    "eslint-config-xo-space": "^0.18.0",
+    "eslint-plugin-react": "^7.8.2"
   }
 }
